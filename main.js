@@ -11,7 +11,7 @@ const galleryImages = ["./images/2.1.png", "./images/2.2.png", "./images/2.3.png
 const dom = {
   projectIndex: document.getElementById("projectIndex"), projectModal: document.getElementById("projectModal"), closeProjectModal: document.getElementById("closeProjectModal"),
   imageLightbox: document.getElementById("imageLightbox"), closeLightbox: document.getElementById("closeLightbox"), lightboxPrev: document.getElementById("lightboxPrev"), lightboxNext: document.getElementById("lightboxNext"), lightboxImage: document.getElementById("lightboxImage"),
-  shotsSection: document.getElementById("projectShotsSection"), shotsGrid: document.getElementById("projectShotsGrid"), galleryTrack: document.getElementById("galleryTrack"), portraitUpload: document.getElementById("portraitUpload"), portraitImage: document.getElementById("portraitImage"), portraitPlaceholder: document.getElementById("portraitPlaceholder"),
+  shotsSection: document.getElementById("projectShotsSection"), shotsGrid: document.getElementById("projectShotsGrid"), galleryTrack: document.getElementById("galleryTrack"), portraitImage: document.getElementById("portraitImage"),
   featuredKicker: document.querySelector(".featured-copy .eyebrow"), featuredTitle: document.querySelector(".featured-copy h3"), featuredSummary: document.querySelector(".featured-summary"), featuredRole: document.querySelector(".featured-role"), featuredSolution: document.querySelector(".featured-solution"), featuredResult: document.querySelector(".featured-result"), featuredButton: document.querySelector(".featured-copy [data-featured-project]")
 };
 
@@ -71,7 +71,6 @@ function bindEvents() {
   document.querySelectorAll("[data-close='project']").forEach((item) => item.addEventListener("click", closeProject)); document.querySelectorAll("[data-close='lightbox']").forEach((item) => item.addEventListener("click", closeLightbox));
   document.addEventListener("click", (event) => { const item = event.target.closest("[data-featured-project]"); if (item) openProject(Number(item.dataset.featuredProject)); });
   document.querySelectorAll("[data-open-about]").forEach((item) => item.addEventListener("click", () => document.getElementById("about")?.scrollIntoView({ behavior: "smooth" })));
-  dom.portraitUpload.addEventListener("change", (event) => { const file = event.target.files?.[0]; if (!file) return; dom.portraitImage.src = URL.createObjectURL(file); dom.portraitImage.classList.add("has-photo"); dom.portraitPlaceholder.classList.add("hidden"); });
   document.addEventListener("keydown", (event) => { if (!dom.imageLightbox.classList.contains("hidden")) { if (event.key === "ArrowLeft") changeLightbox(-1); if (event.key === "ArrowRight") changeLightbox(1); if (event.key === "Escape") closeLightbox(); return; } if (event.key === "Escape" && !dom.projectModal.classList.contains("hidden")) closeProject(); });
 }
 
