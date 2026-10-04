@@ -749,6 +749,8 @@ html { scroll-behavior: smooth; }
 .ambient-drift img:nth-child(6) { width: 46px; opacity: .36; animation-delay: -5.1s; }
 .ambient-drift img:nth-child(7) { width: 21px; opacity: .64; animation: ambient-twinkle 4.2s ease-in-out infinite; animation-delay: -2s; }
 .ambient-drift img:nth-child(8) { width: 16px; opacity: .5; animation: ambient-twinkle 5.2s ease-in-out infinite; animation-delay: -4s; }
+.ambient-drift img:nth-child(9) { width: 31px; opacity: .38; animation-delay: -1.4s; }
+.ambient-drift img:nth-child(10) { width: 19px; opacity: .58; animation: ambient-twinkle 4.9s ease-in-out infinite; animation-delay: -3.2s; }
 .ambient-home img:nth-child(1) { top: 18%; left: 5%; width: 54px; transform: rotate(-24deg); }
 .ambient-home img:nth-child(2) { top: 70%; left: 45%; width: 34px; transform: rotate(38deg); }
 .ambient-home img:nth-child(3) { top: 31%; left: 47%; }
@@ -781,6 +783,10 @@ html { scroll-behavior: smooth; }
 .ambient-contact img:nth-child(4) { top: 58%; left: 42%; transform: rotate(15deg); }
 .ambient-contact img:nth-child(5) { bottom: 13%; right: 9%; }
 .ambient-contact img:nth-child(6) { top: 12%; left: 34%; }
+.ambient-about img:nth-child(7), .ambient-work img:nth-child(7), .ambient-gallery img:nth-child(7), .ambient-contact img:nth-child(7) { top: 36%; left: 20%; transform: rotate(-24deg); }
+.ambient-about img:nth-child(8), .ambient-work img:nth-child(8), .ambient-gallery img:nth-child(8), .ambient-contact img:nth-child(8) { bottom: 38%; right: 24%; }
+.ambient-about img:nth-child(9), .ambient-work img:nth-child(9), .ambient-gallery img:nth-child(9), .ambient-contact img:nth-child(9) { top: 73%; left: 72%; transform: rotate(18deg); }
+.ambient-about img:nth-child(10), .ambient-work img:nth-child(10), .ambient-gallery img:nth-child(10), .ambient-contact img:nth-child(10) { top: 9%; right: 37%; }
 @keyframes ambient-float { 0%, 100% { margin-top: 0; rotate: 0deg; } 50% { margin-top: 16px; rotate: 5deg; } }
 @keyframes ambient-twinkle { 0%, 100% { opacity: .3; scale: .86; } 50% { opacity: .88; scale: 1.12; } }
 @media (max-width: 800px) {
