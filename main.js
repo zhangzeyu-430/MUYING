@@ -96,7 +96,7 @@ function setupGlobalMotion() {
   const sectionObserver = new IntersectionObserver((entries) => entries.forEach((entry) => entry.target.classList.toggle("is-active", entry.isIntersecting)), { threshold: 0.28 });
   sections.forEach((section) => sectionObserver.observe(section));
 
-  const parallaxTargets = [...document.querySelectorAll(".scene-leaf, .scene-star, .hero-leaf-rail img, .about-leaf, .about-sprig, .work-leaf, .work-tape, .work-apple, .gallery-leaf, .gallery-sprig, .contact-leaf, .contact-note-art")];
+  const parallaxTargets = [...document.querySelectorAll(".scene-leaf, .scene-star, .hero-leaf-rail img, .ambient-drift img, .about-leaf, .about-sprig, .work-leaf, .work-tape, .work-apple, .gallery-leaf, .gallery-sprig, .contact-leaf, .contact-note-art")];
   let frame = 0;
   const updateParallax = () => {
     frame = 0;
