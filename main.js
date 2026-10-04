@@ -12,17 +12,25 @@ const dom = {
   projectIndex: document.getElementById("projectIndex"), projectModal: document.getElementById("projectModal"), closeProjectModal: document.getElementById("closeProjectModal"),
   imageLightbox: document.getElementById("imageLightbox"), closeLightbox: document.getElementById("closeLightbox"), lightboxPrev: document.getElementById("lightboxPrev"), lightboxNext: document.getElementById("lightboxNext"), lightboxImage: document.getElementById("lightboxImage"),
   shotsSection: document.getElementById("projectShotsSection"), shotsGrid: document.getElementById("projectShotsGrid"), galleryTrack: document.getElementById("galleryTrack"), portraitImage: document.getElementById("portraitImage"),
-  featuredKicker: document.querySelector(".featured-copy .eyebrow"), featuredTitle: document.querySelector(".featured-copy h3"), featuredSummary: document.querySelector(".featured-summary"), featuredRole: document.querySelector(".featured-role"), featuredSolution: document.querySelector(".featured-solution"), featuredResult: document.querySelector(".featured-result"), featuredButton: document.querySelector(".featured-copy [data-featured-project]")
+  featuredCase: document.querySelector(".featured-case"), featuredKicker: document.querySelector(".featured-copy .eyebrow"), featuredTitle: document.querySelector(".featured-copy h3"), featuredSummary: document.querySelector(".featured-summary"), featuredRole: document.querySelector(".featured-role"), featuredSolution: document.querySelector(".featured-solution"), featuredResult: document.querySelector(".featured-result"), featuredButton: document.querySelector(".featured-copy [data-featured-project]")
 };
 
 const fields = { title: document.getElementById("projectTitle"), summary: document.getElementById("projectSummary"), role: document.getElementById("projectRole"), problem: document.getElementById("projectProblem"), solution: document.getElementById("projectSolution"), tech: document.getElementById("projectTech"), result: document.getElementById("projectResult"), link: document.getElementById("projectLink") };
 const lightbox = { shots: [], index: 0 };
+let featuredIndex = 0;
 
 function lockScroll(value) { document.body.classList.toggle("lock-scroll", value); }
 function anyPanelOpen() { return !dom.projectModal.classList.contains("hidden") || !dom.imageLightbox.classList.contains("hidden"); }
 
 function setFeaturedProject(index) {
   const project = projects[index]; if (!project) return;
+  if (index !== featuredIndex && dom.featuredCase) {
+    dom.featuredCase.classList.remove("is-switching");
+    void dom.featuredCase.offsetWidth;
+    dom.featuredCase.classList.add("is-switching");
+    window.setTimeout(() => dom.featuredCase.classList.remove("is-switching"), 620);
+  }
+  featuredIndex = index;
   dom.featuredKicker.textContent = `FEATURED CASE · ${String(index + 1).padStart(2, "0")}`;
   dom.featuredTitle.textContent = project.name;
   dom.featuredSummary.textContent = project.summary;
@@ -76,4 +84,39 @@ function bindEvents() {
 
 function setupReveal() { const observer = new IntersectionObserver((entries) => entries.forEach((entry) => { if (entry.isIntersecting) { entry.target.classList.add("is-visible"); observer.unobserve(entry.target); } }), { threshold: 0.12 }); document.querySelectorAll(".reveal").forEach((element) => observer.observe(element)); }
 
-renderProjects(); renderGallery(); bindEvents(); setupReveal();
+function setupGlobalMotion() {
+  const titleTargets = document.querySelectorAll(".section-heading, .hero-copy h1, .about-copy h2, .work-heading h2, .gallery-heading h2, .contact-layout h2");
+  titleTargets.forEach((element) => element.classList.add("motion-title"));
+  const titleObserver = new IntersectionObserver((entries) => entries.forEach((entry) => {
+    if (entry.isIntersecting) { entry.target.classList.add("is-title-visible"); titleObserver.unobserve(entry.target); }
+  }), { threshold: 0.25 });
+  titleTargets.forEach((element) => titleObserver.observe(element));
+
+  const sections = [...document.querySelectorAll(".page-section")];
+  const sectionObserver = new IntersectionObserver((entries) => entries.forEach((entry) => entry.target.classList.toggle("is-active", entry.isIntersecting)), { threshold: 0.28 });
+  sections.forEach((section) => sectionObserver.observe(section));
+
+  const parallaxTargets = [...document.querySelectorAll(".scene-leaf, .scene-star, .hero-leaf-rail img, .about-leaf, .about-sprig, .work-leaf, .work-tape, .work-apple, .gallery-leaf, .gallery-sprig, .contact-leaf, .contact-note-art")];
+  let frame = 0;
+  const updateParallax = () => {
+    frame = 0;
+    const viewportCenter = window.innerHeight * 0.5;
+    parallaxTargets.forEach((element, index) => {
+      const rect = element.getBoundingClientRect();
+      const speed = 0.018 + (index % 4) * 0.009;
+      const offset = Math.max(-22, Math.min(22, (viewportCenter - (rect.top + rect.height * 0.5)) * speed));
+      element.style.translate = `0 ${offset.toFixed(1)}px`;
+    });
+    sections.forEach((section) => {
+      const rect = section.getBoundingClientRect();
+      const offset = Math.max(-28, Math.min(28, (window.innerHeight * 0.5 - (rect.top + rect.height * 0.5)) * 0.018));
+      section.style.setProperty("--bg-shift", `${offset.toFixed(1)}px`);
+    });
+  };
+  const requestParallax = () => { if (!frame) frame = window.requestAnimationFrame(updateParallax); };
+  window.addEventListener("scroll", requestParallax, { passive: true });
+  window.addEventListener("resize", requestParallax, { passive: true });
+  requestParallax();
+}
+
+renderProjects(); renderGallery(); bindEvents(); setupReveal(); setupGlobalMotion();
