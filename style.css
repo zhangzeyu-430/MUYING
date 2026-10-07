@@ -933,12 +933,14 @@ body::after { content: ""; position: fixed; z-index: 1; inset: 0; pointer-events
 }
 
 /* GitHub apple badge beside the work heading. */
+.work-heading { justify-content: flex-start; }
 .work-github-apple {
   position: relative;
   display: block;
+  order: -1;
   flex: 0 0 clamp(86px, 10vw, 132px);
   width: clamp(86px, 10vw, 132px);
-  margin: 0 clamp(8px, 2vw, 28px) 12px 0;
+  margin: 0 clamp(20px, 4vw, 58px) 0 0;
   color: #fff8e8;
   text-decoration: none;
   transform: rotate(8deg);
@@ -963,7 +965,9 @@ body::after { content: ""; position: fixed; z-index: 1; inset: 0; pointer-events
 }
 .work-github-apple:focus-visible { outline: 2px solid var(--red); outline-offset: 6px; }
 @media (max-width: 800px) {
-  .work-github-apple { width: 92px; margin: 18px 10px 0 auto; }
+  .work-heading { display: flex; align-items: flex-start; justify-content: flex-start; gap: 16px; }
+  .work-title { min-width: 0; flex: 1; }
+  .work-github-apple { width: 92px; margin: 12px 0 0; }
 }
 
 /* Homepage stars stay at their original scale; other pages keep the larger stars. */
