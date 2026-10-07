@@ -931,3 +931,37 @@ body::after { content: ""; position: fixed; z-index: 1; inset: 0; pointer-events
   0%, 100% { opacity: .3; scale: 2.58; }
   50% { opacity: .88; scale: 3.36; }
 }
+
+/* GitHub apple badge beside the work heading. */
+.work-github-apple {
+  position: relative;
+  display: block;
+  flex: 0 0 clamp(86px, 10vw, 132px);
+  width: clamp(86px, 10vw, 132px);
+  margin: 0 clamp(8px, 2vw, 28px) 12px 0;
+  color: #fff8e8;
+  text-decoration: none;
+  transform: rotate(8deg);
+  filter: drop-shadow(0 11px 8px rgba(73, 47, 22, .18));
+  transition: transform .3s ease, filter .3s ease;
+}
+.work-github-apple img { display: block; width: 100%; height: auto; }
+.work-github-apple span {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  color: #fff8e8;
+  font: 700 12px/1 var(--sans);
+  letter-spacing: .04em;
+  text-shadow: 0 1px 3px rgba(71, 37, 20, .38);
+  transform: translate(-50%, -50%) rotate(-8deg);
+}
+.work-github-apple:hover,
+.work-github-apple:focus-visible {
+  transform: rotate(3deg) translateY(-7px) scale(1.08);
+  filter: drop-shadow(0 17px 12px rgba(73, 47, 22, .25));
+}
+.work-github-apple:focus-visible { outline: 2px solid var(--red); outline-offset: 6px; }
+@media (max-width: 800px) {
+  .work-github-apple { width: 92px; margin: 18px 10px 0 auto; }
+}
