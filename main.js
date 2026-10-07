@@ -74,7 +74,7 @@ function setFeaturedProject(index) {
 }
 
 function renderProjects() {
-  dom.projectIndex.innerHTML = projects.map((project, index) => `<button class="project-row reveal" type="button" data-project-index="${index}"><span class="row-number">0${index + 1}</span><span class="row-copy"><span class="row-title"><span class="row-apple">●</span>${project.name}</span><span class="row-summary">${project.summary}</span><span class="row-meta">${project.type} <i>·</i> ${project.role}</span></span><span class="row-result">${project.result}</span><span class="row-arrow">↗</span></button>`).join("");
+  dom.projectIndex.innerHTML = projects.map((project, index) => `<button class="project-row reveal" type="button" data-project-index="${index}"><span class="row-number">0${index + 1}</span><span class="row-copy"><span class="row-title"><img class="row-apple" src="./images/layers/apple.png" alt="" aria-hidden="true" />${project.name}</span><span class="row-summary">${project.summary}</span><span class="row-meta">${project.type} <i>·</i> ${project.role}</span></span><span class="row-result">${project.result}</span><span class="row-arrow">↗</span></button>`).join("");
   dom.projectIndex.querySelectorAll("[data-project-index]").forEach((row) => {
     const update = () => setFeaturedProject(Number(row.dataset.projectIndex));
     row.addEventListener("mouseenter", update);
