@@ -911,3 +911,23 @@ body::after { content: ""; position: fixed; z-index: 1; inset: 0; pointer-events
 /* Use the same hand-painted apple mark in the project list. */
 .row-title { display: inline-flex; align-items: center; gap: 9px; }
 .row-apple { display: block; width: 22px; height: 22px; margin: 0; object-fit: contain; filter: drop-shadow(0 3px 2px rgba(64, 45, 20, .15)); }
+
+/* FINAL STAR SCALE: enlarge every floating star without affecting leaves. */
+.scene-star,
+.hero-leaf-rail img[src*="/star-"] {
+  scale: 3;
+}
+.ambient-drift img[src*="/star-"] {
+  scale: 3;
+}
+.ambient-drift img[src*="/star-"]:nth-child(3),
+.ambient-drift img[src*="/star-"]:nth-child(4),
+.ambient-drift img[src*="/star-"]:nth-child(7),
+.ambient-drift img[src*="/star-"]:nth-child(8),
+.ambient-drift img[src*="/star-"]:nth-child(10) {
+  animation-name: ambient-star-twinkle-large;
+}
+@keyframes ambient-star-twinkle-large {
+  0%, 100% { opacity: .3; scale: 2.58; }
+  50% { opacity: .88; scale: 3.36; }
+}
