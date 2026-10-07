@@ -6,21 +6,54 @@ const projects = [
   { name: "新项目占位苹果", type: "New Project · Coming soon", summary: "一个正在生长的新项目，等你来补充它的故事。", role: "待填写", problem: "待填写", solution: "待填写", tech: "待填写", result: "待填写", link: "", screenshots: ["./images/1.1.png", "./images/1.2.png", "./images/1.3.png", "./images/1.4.png"] }
 ];
 
+const experiences = [
+  {
+    period: "2026.01 — 2026.04",
+    company: "亚信科技",
+    role: "AI 应用开发实习生",
+    title: "大表哥｜企业 Excel 智能分析与核验平台",
+    tech: "Python、Node.js、SQLite、LLM、Agent Workflow、Tool Calling、Context Engineering、JSON Schema、本地化部署",
+    summary: "面向财务、薪酬、预算等复杂 Excel，参与构建从表格理解、公式核验、异常定位到报告交付的 Agent 工作流，解决大模型直接处理 Excel 时容易出现的上下文超限、业务误判和结果不可追溯问题。",
+    points: [
+      "Agent Workflow：参与将 Excel 分析拆分为结构识别、公式还原、语义判断、专家确认、结果验证和报告交付等阶段，明确 LLM、确定性程序和业务专家的职责边界。",
+      "Context Engineering：将 Workbook、Sheet、Cell、Formula、Reference 等底层证据整理为结构化上下文，使 Agent 只处理真正需要业务判断的问题。",
+      "Tool Calling 与权限控制：参与设计 Skill、TaskContract 和 Tool Bridge，通过工具白名单、路径校验、JSON Schema 参数校验和人工确认，限制 Agent 越权访问文件、修改数据库或发布业务结论。",
+      "复杂 Excel 受控验证覆盖 25 个 Sheet、8,025 个公式和 15,868 个重点单元格；4/4 类预置问题和 5/5 条检测路径全部命中。针对约 17 MB 公式密集工作簿，处理耗时由 73.5 秒降至 32.6 秒，内存占用由 1762 MB 降至 215 MB，并通过逐字节回归确认结果未发生变化。"
+    ]
+  },
+  {
+    period: "2026.04 — 2026.08",
+    company: "CSDN",
+    role: "AI 应用开发实习生（FDE）",
+    title: "企业 AI 应用落地与 Agent Workflow",
+    tech: "Agent Skill、Browser Automation、CLI、MCP、Tauri、Markdown、SQLite FTS5、Obsidian",
+    summary: "面向企业客户真实业务场景开展 AI 应用落地，参与需求访谈、流程梳理与技术方案设计，将人工经验流程、跨系统操作和业务规则抽象为可执行的 Agent Workflow。",
+    points: [
+      "支撑 2 个企业客户、23 个 AI 应用场景分析与方案落地，完成从需求分析、流程梳理到技术方案设计的协作。",
+      "参与企业级 Agent 应用架构设计与原型开发，根据业务复杂度选择 Agent Skill、CLI、浏览器自动化、MCP、Tauri 桌面端等技术方案，完成从技术验证到端侧交付。",
+      "封装可复用 Agent Skill 与 Browser Automation 组件，探索合同审核、业务系统操作等场景中的自然语言驱动自动化能力。",
+      "基于 Markdown、SQLite FTS5、Obsidian 与 MCP 搭建企业 AI 知识资产沉淀体系，归纳形成 6 类 AI 应用交付模式，提升后续场景复制效率。"
+    ]
+  }
+];
+
 const galleryImages = ["./images/2.1.png", "./images/2.2.png", "./images/2.3.png", "./images/2.4.png", "./images/2.5.png", "./images/1.1.png", "./images/1.2.png", "./images/1.3.png"];
 
 const dom = {
   projectIndex: document.getElementById("projectIndex"), projectModal: document.getElementById("projectModal"), closeProjectModal: document.getElementById("closeProjectModal"),
+  experienceModal: document.getElementById("experienceModal"), closeExperienceModal: document.getElementById("closeExperienceModal"),
   imageLightbox: document.getElementById("imageLightbox"), closeLightbox: document.getElementById("closeLightbox"), lightboxPrev: document.getElementById("lightboxPrev"), lightboxNext: document.getElementById("lightboxNext"), lightboxImage: document.getElementById("lightboxImage"),
   shotsSection: document.getElementById("projectShotsSection"), shotsGrid: document.getElementById("projectShotsGrid"), galleryTrack: document.getElementById("galleryTrack"), portraitImage: document.getElementById("portraitImage"),
   featuredCase: document.querySelector(".featured-case"), featuredKicker: document.querySelector(".featured-copy .eyebrow"), featuredTitle: document.querySelector(".featured-copy h3"), featuredSummary: document.querySelector(".featured-summary"), featuredRole: document.querySelector(".featured-role"), featuredSolution: document.querySelector(".featured-solution"), featuredResult: document.querySelector(".featured-result"), featuredButton: document.querySelector(".featured-copy [data-featured-project]")
 };
 
 const fields = { title: document.getElementById("projectTitle"), summary: document.getElementById("projectSummary"), role: document.getElementById("projectRole"), problem: document.getElementById("projectProblem"), solution: document.getElementById("projectSolution"), tech: document.getElementById("projectTech"), result: document.getElementById("projectResult"), link: document.getElementById("projectLink") };
+const experienceFields = { period: document.getElementById("experiencePeriod"), company: document.getElementById("experienceCompany"), role: document.getElementById("experienceRole"), title: document.getElementById("experienceTitle"), tech: document.getElementById("experienceTech"), summary: document.getElementById("experienceSummary"), points: document.getElementById("experiencePoints") };
 const lightbox = { shots: [], index: 0 };
 let featuredIndex = 0;
 
 function lockScroll(value) { document.body.classList.toggle("lock-scroll", value); }
-function anyPanelOpen() { return !dom.projectModal.classList.contains("hidden") || !dom.imageLightbox.classList.contains("hidden"); }
+function anyPanelOpen() { return !dom.projectModal.classList.contains("hidden") || !dom.experienceModal.classList.contains("hidden") || !dom.imageLightbox.classList.contains("hidden"); }
 
 function setFeaturedProject(index) {
   const project = projects[index]; if (!project) return;
@@ -69,17 +102,32 @@ function openProject(index) {
   renderShots(project); dom.projectModal.classList.remove("hidden"); lockScroll(true);
 }
 function closeProject() { dom.projectModal.classList.add("hidden"); lockScroll(anyPanelOpen()); }
+function openExperience(index) {
+  const experience = experiences[index]; if (!experience) return;
+  experienceFields.period.textContent = experience.period;
+  experienceFields.company.textContent = experience.company;
+  experienceFields.role.textContent = experience.role;
+  experienceFields.title.textContent = experience.title;
+  experienceFields.tech.textContent = experience.tech;
+  experienceFields.summary.textContent = experience.summary;
+  experienceFields.points.innerHTML = experience.points.map((point) => `<li>${point}</li>`).join("");
+  dom.experienceModal.classList.remove("hidden");
+  lockScroll(true);
+}
+function closeExperience() { dom.experienceModal.classList.add("hidden"); lockScroll(anyPanelOpen()); }
 function updateLightbox() { const count = lightbox.shots.length; if (!count) return; lightbox.index = (lightbox.index + count) % count; dom.lightboxImage.src = lightbox.shots[lightbox.index]; dom.lightboxImage.alt = `截图 ${lightbox.index + 1}`; }
 function openLightbox(shots, index) { lightbox.shots = shots; lightbox.index = index; updateLightbox(); dom.imageLightbox.classList.remove("hidden"); lockScroll(true); }
 function closeLightbox() { dom.imageLightbox.classList.add("hidden"); dom.lightboxImage.src = ""; lockScroll(anyPanelOpen()); }
 function changeLightbox(step) { if (lightbox.shots.length > 1) { lightbox.index += step; updateLightbox(); } }
 
 function bindEvents() {
-  dom.closeProjectModal.addEventListener("click", closeProject); dom.closeLightbox.addEventListener("click", closeLightbox); dom.lightboxPrev.addEventListener("click", () => changeLightbox(-1)); dom.lightboxNext.addEventListener("click", () => changeLightbox(1));
+  dom.closeProjectModal.addEventListener("click", closeProject); dom.closeExperienceModal.addEventListener("click", closeExperience); dom.closeLightbox.addEventListener("click", closeLightbox); dom.lightboxPrev.addEventListener("click", () => changeLightbox(-1)); dom.lightboxNext.addEventListener("click", () => changeLightbox(1));
   document.querySelectorAll("[data-close='project']").forEach((item) => item.addEventListener("click", closeProject)); document.querySelectorAll("[data-close='lightbox']").forEach((item) => item.addEventListener("click", closeLightbox));
-  document.addEventListener("click", (event) => { const item = event.target.closest("[data-featured-project]"); if (item) openProject(Number(item.dataset.featuredProject)); });
+  document.querySelectorAll("[data-close='experience']").forEach((item) => item.addEventListener("click", closeExperience));
+  document.querySelectorAll("[data-open-experience]").forEach((item) => item.addEventListener("click", () => openExperience(Number(item.dataset.openExperience))));
+  document.addEventListener("click", (event) => { const experienceItem = event.target.closest("[data-open-experience]"); if (experienceItem) { openExperience(Number(experienceItem.dataset.openExperience)); return; } const item = event.target.closest("[data-featured-project]"); if (item) openProject(Number(item.dataset.featuredProject)); });
   document.querySelectorAll("[data-open-about]").forEach((item) => item.addEventListener("click", () => document.getElementById("about")?.scrollIntoView({ behavior: "smooth" })));
-  document.addEventListener("keydown", (event) => { if (!dom.imageLightbox.classList.contains("hidden")) { if (event.key === "ArrowLeft") changeLightbox(-1); if (event.key === "ArrowRight") changeLightbox(1); if (event.key === "Escape") closeLightbox(); return; } if (event.key === "Escape" && !dom.projectModal.classList.contains("hidden")) closeProject(); });
+  document.addEventListener("keydown", (event) => { if (!dom.imageLightbox.classList.contains("hidden")) { if (event.key === "ArrowLeft") changeLightbox(-1); if (event.key === "ArrowRight") changeLightbox(1); if (event.key === "Escape") closeLightbox(); return; } if (event.key === "Escape" && !dom.experienceModal.classList.contains("hidden")) { closeExperience(); return; } if (event.key === "Escape" && !dom.projectModal.classList.contains("hidden")) closeProject(); });
 }
 
 function setupReveal() { const observer = new IntersectionObserver((entries) => entries.forEach((entry) => { if (entry.isIntersecting) { entry.target.classList.add("is-visible"); observer.unobserve(entry.target); } }), { threshold: 0.12 }); document.querySelectorAll(".reveal").forEach((element) => observer.observe(element)); }
@@ -140,7 +188,7 @@ function setupResponsiveInteractions() {
   const root = document.documentElement;
   const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)");
   const heroScene = document.querySelector(".hero-scene");
-  const tooltipLabels = ["语境词汇学习系统", "游戏数字人音乐推荐模块"];
+  const tooltipLabels = experiences.map((experience) => `${experience.company} · ${experience.role}`);
 
   document.querySelectorAll(".scene-apple").forEach((apple, index) => {
     apple.dataset.tooltip = tooltipLabels[index] || "查看项目";

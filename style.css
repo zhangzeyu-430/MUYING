@@ -882,3 +882,28 @@ body::after { content: ""; position: fixed; z-index: 1; inset: 0; pointer-events
   body::after { transition: none; }
   .click-ripple { animation: none; }
 }
+
+/* Experience modal for the two homepage apples. */
+.experience-card { width: min(980px, 92vw); }
+.experience-meta { display: flex; flex-wrap: wrap; gap: 9px; margin: 18px 0 9px; color: var(--muted); font-size: 12px; }
+.experience-meta span { padding: 6px 10px; border: 1px solid rgba(151, 111, 69, .28); border-radius: 999px; }
+.experience-meta span + span { color: var(--red); }
+.experience-card .modal-title { max-width: 780px; margin-top: 12px; }
+.experience-tech { display: grid; gap: 8px; margin-top: 25px; padding: 17px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.experience-tech span, .experience-points h3 { color: var(--red); font-size: 11px; letter-spacing: .12em; }
+.experience-tech strong { color: #50645a; font-size: 13px; line-height: 1.75; font-weight: 500; }
+.experience-points { margin-top: 27px; }
+.experience-points h3 { margin: 0 0 13px; }
+.experience-points ul { display: grid; gap: 13px; margin: 0; padding-left: 20px; color: #50645a; font-size: 14px; line-height: 1.75; }
+.experience-points li::marker { color: var(--red); }
+@media (max-width: 800px) {
+  .experience-card { padding: 22px; }
+  .experience-meta { gap: 6px; }
+  .experience-meta span { font-size: 10px; }
+  .experience-card .modal-title { font-size: 29px; }
+  .experience-points ul { font-size: 13px; }
+}
+
+/* Keep the homepage foreground art clickable above the copy layer. */
+.hero-scene { z-index: 9; }
+.hero-scene .scene-girl, .hero-scene .scene-apple { pointer-events: auto; }
