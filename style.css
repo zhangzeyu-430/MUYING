@@ -965,3 +965,16 @@ body::after { content: ""; position: fixed; z-index: 1; inset: 0; pointer-events
 @media (max-width: 800px) {
   .work-github-apple { width: 92px; margin: 18px 10px 0 auto; }
 }
+
+/* Homepage stars stay at their original scale; other pages keep the larger stars. */
+#home .scene-star,
+#home .hero-leaf-rail img[src*="/star-"],
+#home .ambient-drift img[src*="/star-"] {
+  scale: 1;
+}
+#home .ambient-drift img[src*="/star-"]:nth-child(3),
+#home .ambient-drift img[src*="/star-"]:nth-child(4),
+#home .ambient-drift img[src*="/star-"]:nth-child(7),
+#home .ambient-drift img[src*="/star-"]:nth-child(8) {
+  animation-name: ambient-twinkle;
+}
