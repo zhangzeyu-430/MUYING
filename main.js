@@ -119,4 +119,21 @@ function setupGlobalMotion() {
   requestParallax();
 }
 
-renderProjects(); renderGallery(); bindEvents(); setupReveal(); setupGlobalMotion();
+function setupPageTurn() {
+  const overlay = document.querySelector(".page-turn-overlay");
+  if (!overlay) return;
+  document.querySelectorAll("a[href^='#']").forEach((link) => link.addEventListener("click", (event) => {
+    const href = link.getAttribute("href");
+    const target = href ? document.querySelector(href) : null;
+    if (!target || href === window.location.hash) return;
+    event.preventDefault();
+    overlay.classList.remove("is-turning");
+    void overlay.offsetWidth;
+    overlay.classList.add("is-turning");
+    window.history.pushState(null, "", href);
+    window.setTimeout(() => target.scrollIntoView({ behavior: "smooth", block: "start" }), 150);
+    window.setTimeout(() => overlay.classList.remove("is-turning"), 1120);
+  }));
+}
+
+renderProjects(); renderGallery(); bindEvents(); setupReveal(); setupGlobalMotion(); setupPageTurn();

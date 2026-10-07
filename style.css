@@ -789,6 +789,12 @@ html { scroll-behavior: smooth; }
 .ambient-about img:nth-child(10), .ambient-work img:nth-child(10), .ambient-gallery img:nth-child(10), .ambient-contact img:nth-child(10) { top: 9%; right: 37%; }
 @keyframes ambient-float { 0%, 100% { margin-top: 0; rotate: 0deg; } 50% { margin-top: 16px; rotate: 5deg; } }
 @keyframes ambient-twinkle { 0%, 100% { opacity: .3; scale: .86; } 50% { opacity: .88; scale: 1.12; } }
+.page-turn-overlay { position: fixed; z-index: 45; inset: 0; display: grid; place-items: center; overflow: hidden; pointer-events: none; opacity: 0; }
+.page-turn-overlay img { display: block; width: max(100vw, 1100px); max-width: none; user-select: none; transform: translateX(-125%) rotate(-4deg); }
+.page-turn-overlay.is-turning { animation: page-turn-dissolve 1.12s cubic-bezier(.2,.7,.2,1) both; }
+.page-turn-overlay.is-turning img { animation: page-turn-sweep 1.12s cubic-bezier(.2,.7,.2,1) both; }
+@keyframes page-turn-dissolve { 0%, 100% { opacity: 0; } 16%, 78% { opacity: 1; } }
+@keyframes page-turn-sweep { 0% { transform: translateX(-125%) rotate(-4deg); } 20% { transform: translateX(-55%) rotate(-2deg); } 55% { transform: translateX(0) rotate(1deg); } 100% { transform: translateX(125%) rotate(4deg); } }
 @media (max-width: 800px) {
   .ambient-drift img { opacity: .34; }
   .ambient-work img:nth-child(2), .ambient-contact img:nth-child(2) { display: none; }
