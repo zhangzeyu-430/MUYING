@@ -136,4 +136,68 @@ function setupPageTurn() {
   }));
 }
 
-renderProjects(); renderGallery(); bindEvents(); setupReveal(); setupGlobalMotion(); setupPageTurn();
+function setupResponsiveInteractions() {
+  const root = document.documentElement;
+  const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)");
+  const heroScene = document.querySelector(".hero-scene");
+  const tooltipLabels = ["语境词汇学习系统", "游戏数字人音乐推荐模块"];
+
+  document.querySelectorAll(".scene-apple").forEach((apple, index) => {
+    apple.dataset.tooltip = tooltipLabels[index] || "查看项目";
+  });
+
+  const resetMagnetic = (element) => {
+    element.style.setProperty("--mag-x", "0px");
+    element.style.setProperty("--mag-y", "0px");
+  };
+
+  document.querySelectorAll(".button, .text-link").forEach((element) => {
+    element.addEventListener("pointermove", (event) => {
+      if (!finePointer.matches) return;
+      const rect = element.getBoundingClientRect();
+      const x = (event.clientX - (rect.left + rect.width / 2)) / rect.width;
+      const y = (event.clientY - (rect.top + rect.height / 2)) / rect.height;
+      element.style.setProperty("--mag-x", `${(x * 7).toFixed(1)}px`);
+      element.style.setProperty("--mag-y", `${(y * 5).toFixed(1)}px`);
+    });
+    element.addEventListener("pointerleave", () => resetMagnetic(element));
+  });
+
+  const updateCursorScene = (event) => {
+    if (!finePointer.matches) return;
+    const x = (event.clientX / window.innerWidth - 0.5) * 2;
+    const y = (event.clientY / window.innerHeight - 0.5) * 2;
+    root.style.setProperty("--cursor-x", `${event.clientX}px`);
+    root.style.setProperty("--cursor-y", `${event.clientY}px`);
+    if (heroScene) {
+      heroScene.style.setProperty("--scene-shift-x", `${(x * -7).toFixed(1)}px`);
+      heroScene.style.setProperty("--scene-shift-y", `${(y * -5).toFixed(1)}px`);
+    }
+  };
+  window.addEventListener("pointermove", updateCursorScene, { passive: true });
+  window.addEventListener("pointerleave", () => {
+    root.style.setProperty("--cursor-x", "50vw");
+    root.style.setProperty("--cursor-y", "50vh");
+    if (heroScene) {
+      heroScene.style.setProperty("--scene-shift-x", "0px");
+      heroScene.style.setProperty("--scene-shift-y", "0px");
+    }
+  });
+
+  document.addEventListener("pointerdown", (event) => {
+    const target = event.target.closest(".button, .text-link, .project-row, .gallery-item, .lightbox-nav, .close-btn");
+    if (!target) return;
+    target.classList.add("is-pressed");
+    window.setTimeout(() => target.classList.remove("is-pressed"), 220);
+    if (!target.matches(".button, .text-link, .project-row, .gallery-item")) return;
+    const rect = target.getBoundingClientRect();
+    const ripple = document.createElement("span");
+    ripple.className = "click-ripple";
+    ripple.style.left = `${event.clientX - rect.left}px`;
+    ripple.style.top = `${event.clientY - rect.top}px`;
+    target.append(ripple);
+    window.setTimeout(() => ripple.remove(), 550);
+  });
+}
+
+renderProjects(); renderGallery(); bindEvents(); setupReveal(); setupGlobalMotion(); setupPageTurn(); setupResponsiveInteractions();
