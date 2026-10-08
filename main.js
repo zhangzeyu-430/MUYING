@@ -1,9 +1,9 @@
 const projects = [
-  { name: "语境词汇学习系统", type: "AI Coding · Learning", summary: "把背单词从孤立记忆变成语境、练习与复习的学习闭环。", role: "产品设计 + 工程落地", problem: "传统词表学习缺少真实语境，用户理解和迁移成本高。", solution: "用户选词，AI 生成语境化解释，再进入练习与间隔复习。", tech: "Python, LLM, React, Tailwind", result: "完成闭环复习流程，提升单词记忆效率。", link: "", screenshots: ["./images/2.1.png", "./images/2.2.png", "./images/2.3.png", "./images/2.4.png", "./images/2.5.png"] },
-  { name: "游戏数字人音乐推荐模块", type: "AI Product · RAG", summary: "让数字人从泛聊天变成能够理解偏好的音乐伙伴。", role: "AI 产品经理，0-1 模块设计", problem: "游戏内数字人互动空洞，缺乏持续、有价值的推荐能力。", solution: "完成模块规划，搭建 8300+ 首歌曲语义知识库并编排 Query / Prompt。", tech: "Dify, RAG, GPT-4, gte-rerank-v2", result: "灰度测试有效响应率 95%，用户满意率 78%。", link: "", screenshots: [] },
-  { name: "金杜律师事务所专利 RAG 系统", type: "Enterprise AI · RAG", summary: "用结构化文档理解和混合检索，提升专利流程处理效率。", role: "AI 产品经理", problem: "信息筛选繁琐，跨部门处理和知识查找效率低。", solution: "实现 PDF 结构解析、RAG 问答、多轮问答与混合检索。", tech: "RAG, PDF 解析, Python, Docker", result: "覆盖多部门 50+ 核心用户需求。", link: "", screenshots: [] },
-  { name: "paper-presentation Skill", type: "AI Tool · Skill", summary: "自动生成组会汇报材料，减少论文精读和整理的重复工作。", role: "产品设计与 Skill 输出", problem: "论文精读、逐页整理和组会准备耗时长。", solution: "支持 PDF 转 HTML / PPT，并生成逐页逐字稿和追问应答稿。", tech: "Skill, Python", result: "解决高重复场景的稳定提效问题。", link: "", screenshots: [] },
-  { name: "新项目占位苹果", type: "New Project · Coming soon", summary: "一个正在生长的新项目，等你来补充它的故事。", role: "待填写", problem: "待填写", solution: "待填写", tech: "待填写", result: "待填写", link: "", screenshots: ["./images/1.1.png", "./images/1.2.png", "./images/1.3.png", "./images/1.4.png"] }
+  { name: "AI 产业情报知识库与研究平台", type: "AI Research · Agent Workflow", summary: "面向 AI 产业研究，串联多源采集、知识沉淀、证据检索、观点演进与报告生成。", role: "AI 产品设计 + Agent Workflow 落地", problem: "产业研究资料来源分散，原始信息、事实、观点与报告之间缺少统一的知识生产链路。", solution: "将信源发现、网页采集、Raw 入库、语义抽取、Wiki 编译、人工复核、Dashboard 与专题报告生成串联为统一 Workflow，并接入飞书机器人支持自然语言触发。", tech: "Python, FastAPI, Codex Skills, Hermes Agent, React, TypeScript, JSON Schema, LLM Tool Calling", result: "累计沉淀 3343 条 Raw、591 条事实、43 个动态观点、617 条事实—观点关联，支持五大 AI 产业板块的结构化研究交付。", link: "", screenshots: ["./images/a1.png", "./images/a2.png", "./images/a3.png", "./images/a4.png", "./images/a5.png"] },
+  { name: "AI 智能疾病管理", type: "Healthcare AI · Multi-Agent", summary: "构建覆盖多轮问诊、医学证据检索、结构化诊断、护理计划与随访提醒的疾病管理平台。", role: "AI 应用设计 + RAG 链路落地", problem: "患者问诊需要连续追问、可靠医学证据和诊后管理，单一模型难以同时处理复杂流程与证据可信度。", solution: "由 MasterAgent 负责意图识别与路由，DiagnosisAgent 动态追问和诊断，PlanningAgent 异步生成 CarePlan 与 MonitoringEvent，并整合内部知识库、实时医学搜索和患者历史数据。", tech: "Python, FastAPI, PostgreSQL, Redis, Celery, Chroma, Qwen, Embedding/Rerank, SearXNG", result: "基于 150 条分层医学问题评测，Recall@5 达 0.8900、Hit@5 达 0.9467，Rerank 后 nDCG@5 提升 5.58%。", link: "https://github.com/zhangzeyu-430/meidicare-ai", screenshots: ["./images/m1.png", "./images/m2.png", "./images/m3.png", "./images/m4.png", "./images/m5.png"] },
+  { name: "ETF 期权决策辅助桌面应用", type: "FinTech · Desktop App", summary: "面向个人客户的 ETF 期权研究工具，将行情、成分股、波动率和期权数据转化为可执行的策略建议。", role: "独立开发者", problem: "行情、成分股、波动率和期权数据分散，个人客户的策略判断缺少统一标准和可解释依据。", solution: "设计行情分析、方向判断、策略推荐、期权链、持仓管理和盘中告警功能，建立“趋势 40% + 权重股 30% + 跨 ETF 市场广度 30%”的方向评分模型，并映射至买入期权、牛熊价差、铁鹰或观望策略。", tech: "Python, Tauri, 腾讯财经, 东方财富, 上交所, QVIX, Black-Scholes", result: "独立完成需求分析、产品设计、算法开发、桌面端研发、部署和售后迭代，完成 2 万元定制化商业交付，并通过 166 个自动化测试用例。", link: "", screenshots: ["./images/e1.png", "./images/e2.png", "./images/e3.png", "./images/e4.png"] },
+  { name: "语境词汇学习系统", type: "AI Coding · Learning", summary: "把背单词从孤立记忆变成语境、练习与复习的学习闭环。", role: "产品设计 + 工程落地", problem: "传统词表学习缺少真实语境，用户理解和迁移成本高。", solution: "用户选词，AI 生成语境化解释，再进入练习与间隔复习。", tech: "Python, LLM, React, Tailwind", result: "完成闭环复习流程，提升单词记忆效率。", link: "https://github.com/zhangzeyu-430/ContextVocab", screenshots: ["./images/2.1.png", "./images/2.2.png", "./images/2.3.png", "./images/2.4.png", "./images/2.5.png"] },
+  { name: "paper-presentation Skill", type: "AI Tool · Skill", summary: "自动生成组会汇报材料，减少论文精读和整理的重复工作。", role: "产品设计与 Skill 输出", problem: "论文精读、逐页整理和组会准备耗时长。", solution: "支持 PDF 转 HTML / PPT，并生成逐页逐字稿和追问应答稿。", tech: "Skill, Python", result: "解决高重复场景的稳定提效问题。", link: "https://github.com/zhangzeyu-430/paper-presentation-Skill", screenshots: [] }
 ];
 
 const experiences = [
@@ -37,13 +37,13 @@ const experiences = [
   }
 ];
 
-const galleryImages = ["./images/2.1.png", "./images/2.2.png", "./images/2.3.png", "./images/2.4.png", "./images/2.5.png", "./images/1.1.png", "./images/1.2.png", "./images/1.3.png"];
+const galleryImages = ["./images/生活1.jpg", "./images/生活2.jpg", "./images/生活3.jpg", "./images/生活4.jpg", "./images/生活5.jpg", "./images/生活6.jpg", "./images/生活7.jpg", "./images/生活8.jpg", "./images/生活9.jpg"];
 
 const dom = {
   projectIndex: document.getElementById("projectIndex"), projectModal: document.getElementById("projectModal"), closeProjectModal: document.getElementById("closeProjectModal"),
   experienceModal: document.getElementById("experienceModal"), closeExperienceModal: document.getElementById("closeExperienceModal"),
   imageLightbox: document.getElementById("imageLightbox"), closeLightbox: document.getElementById("closeLightbox"), lightboxPrev: document.getElementById("lightboxPrev"), lightboxNext: document.getElementById("lightboxNext"), lightboxImage: document.getElementById("lightboxImage"),
-  shotsSection: document.getElementById("projectShotsSection"), shotsGrid: document.getElementById("projectShotsGrid"), galleryTrack: document.getElementById("galleryTrack"), portraitImage: document.getElementById("portraitImage"),
+  shotsSection: document.getElementById("projectShotsSection"), shotsGrid: document.getElementById("projectShotsGrid"), galleryWindow: document.getElementById("galleryWindow"), galleryTrack: document.getElementById("galleryTrack"), galleryCurrent: document.getElementById("galleryCurrent"), galleryPrev: document.getElementById("galleryPrev"), galleryPause: document.getElementById("galleryPause"), galleryNext: document.getElementById("galleryNext"), portraitImage: document.getElementById("portraitImage"),
   featuredCase: document.querySelector(".featured-case"), featuredKicker: document.querySelector(".featured-copy .eyebrow"), featuredTitle: document.querySelector(".featured-copy h3"), featuredSummary: document.querySelector(".featured-summary"), featuredRole: document.querySelector(".featured-role"), featuredSolution: document.querySelector(".featured-solution"), featuredResult: document.querySelector(".featured-result"), featuredButton: document.querySelector(".featured-copy [data-featured-project]")
 };
 
@@ -51,6 +51,7 @@ const fields = { title: document.getElementById("projectTitle"), summary: docume
 const experienceFields = { period: document.getElementById("experiencePeriod"), company: document.getElementById("experienceCompany"), role: document.getElementById("experienceRole"), title: document.getElementById("experienceTitle"), tech: document.getElementById("experienceTech"), summary: document.getElementById("experienceSummary"), points: document.getElementById("experiencePoints") };
 const lightbox = { shots: [], index: 0 };
 let featuredIndex = 0;
+const galleryState = { index: 0, paused: false, manual: false, offset: 0, dragging: false, dragStartX: 0, lastX: 0, startIndex: 0, startOffset: 0, moved: false, pressedItem: null, clickTimer: null, suppressClick: false, autoTimer: null };
 
 function lockScroll(value) { document.body.classList.toggle("lock-scroll", value); }
 function anyPanelOpen() { return !dom.projectModal.classList.contains("hidden") || !dom.experienceModal.classList.contains("hidden") || !dom.imageLightbox.classList.contains("hidden"); }
@@ -71,10 +72,15 @@ function setFeaturedProject(index) {
   dom.featuredSolution.textContent = project.solution;
   dom.featuredResult.textContent = project.result;
   dom.featuredButton.dataset.featuredProject = String(index);
+  dom.projectIndex?.querySelectorAll("[data-project-index]").forEach((row) => {
+    const isActive = Number(row.dataset.projectIndex) === index;
+    row.classList.toggle("is-active", isActive);
+    row.setAttribute("aria-current", isActive ? "true" : "false");
+  });
 }
 
 function renderProjects() {
-  dom.projectIndex.innerHTML = projects.map((project, index) => `<button class="project-row reveal" type="button" data-project-index="${index}"><span class="row-number">0${index + 1}</span><span class="row-copy"><span class="row-title"><img class="row-apple" src="./images/layers/apple.png" alt="" aria-hidden="true" />${project.name}</span><span class="row-summary">${project.summary}</span><span class="row-meta">${project.type} <i>·</i> ${project.role}</span></span><span class="row-result">${project.result}</span><span class="row-arrow">↗</span></button>`).join("");
+  dom.projectIndex.innerHTML = projects.map((project, index) => `<button class="project-row reveal${index === 0 ? " is-active" : ""}" type="button" data-project-index="${index}" aria-current="${index === 0 ? "true" : "false"}" aria-label="查看项目：${project.name}"><span class="row-number">0${index + 1}</span><span class="row-copy"><span class="row-title"><img class="row-apple" src="./images/layers/apple.png" alt="" aria-hidden="true" />${project.name}</span><span class="row-summary">${project.summary}</span><span class="row-meta">${project.type} <i>·</i> ${project.role}</span></span><span class="row-result">${project.result}</span><span class="row-arrow"><span class="row-arrow-label">查看</span>↗</span></button>`).join("");
   dom.projectIndex.querySelectorAll("[data-project-index]").forEach((row) => {
     const update = () => setFeaturedProject(Number(row.dataset.projectIndex));
     row.addEventListener("mouseenter", update);
@@ -85,8 +91,177 @@ function renderProjects() {
 
 function renderGallery() {
   const repeated = [...galleryImages, ...galleryImages];
-  dom.galleryTrack.innerHTML = repeated.map((src, index) => `<button class="gallery-item" type="button" data-gallery-index="${index % galleryImages.length}"><img src="${src}" alt="作品截图 ${index % galleryImages.length + 1}" loading="lazy" /></button>`).join("");
-  dom.galleryTrack.querySelectorAll("[data-gallery-index]").forEach((item) => item.addEventListener("click", () => openLightbox(galleryImages, Number(item.dataset.galleryIndex))));
+  dom.galleryTrack.innerHTML = repeated.map((src, index) => {
+    const galleryIndex = index % galleryImages.length;
+    const cloneAttrs = index >= galleryImages.length ? ' aria-hidden="true" tabindex="-1"' : "";
+    return `<button class="gallery-item" type="button" data-gallery-index="${galleryIndex}"${cloneAttrs}><img src="${src}" alt="作品截图 ${galleryIndex + 1}" loading="lazy" /></button>`;
+  }).join("");
+  dom.galleryTrack.addEventListener("click", (event) => {
+    if (event.detail !== 0) return;
+    const item = event.target.closest?.("[data-gallery-index]");
+    if (!item) return;
+    galleryState.index = Number(item.dataset.galleryIndex);
+    updateGalleryStatus();
+    openLightbox(galleryImages, galleryState.index);
+  });
+  dom.galleryTrack.querySelectorAll("[data-gallery-index]").forEach((item) => item.addEventListener("click", () => {
+    galleryState.suppressClick = false;
+    galleryState.index = Number(item.dataset.galleryIndex);
+    updateGalleryStatus();
+    openLightbox(galleryImages, galleryState.index);
+  }));
+  dom.galleryTrack.querySelectorAll("[data-gallery-index]").forEach((item) => {
+    let mouseStartX = 0;
+    let mouseMoved = false;
+    item.addEventListener("mousedown", (event) => {
+      mouseStartX = event.clientX;
+      mouseMoved = false;
+    });
+    item.addEventListener("mousemove", (event) => {
+      if (Math.abs(event.clientX - mouseStartX) > 12) mouseMoved = true;
+    });
+    item.addEventListener("mouseup", () => {
+      if (mouseMoved) return;
+      galleryState.index = Number(item.dataset.galleryIndex);
+      updateGalleryStatus();
+      openLightbox(galleryImages, galleryState.index);
+    });
+    item.addEventListener("pointerdown", () => {
+      galleryState.index = Number(item.dataset.galleryIndex);
+      updateGalleryStatus();
+      openLightbox(galleryImages, galleryState.index);
+    });
+    item.onclick = (event) => {
+      event.stopPropagation();
+      galleryState.index = Number(item.dataset.galleryIndex);
+      updateGalleryStatus();
+      openLightbox(galleryImages, galleryState.index);
+    };
+  });
+}
+
+function updateGalleryStatus() {
+  if (dom.galleryCurrent) dom.galleryCurrent.textContent = String(galleryState.index + 1).padStart(2, "0");
+}
+
+function normalizeGalleryOffset(offset) {
+  const halfWidth = dom.galleryTrack.scrollWidth / 2;
+  if (!halfWidth) return offset;
+  let normalized = offset % halfWidth;
+  if (normalized > 0) normalized -= halfWidth;
+  return normalized;
+}
+
+function setGalleryOffset(offset) {
+  galleryState.offset = normalizeGalleryOffset(offset);
+  dom.galleryTrack.style.setProperty("--gallery-offset", `${galleryState.offset}px`);
+}
+
+function pauseGallery() {
+  galleryState.paused = true;
+  dom.galleryTrack.classList.add("is-paused");
+  dom.galleryPause?.setAttribute("aria-pressed", "true");
+  if (dom.galleryPause) dom.galleryPause.textContent = "继续";
+}
+
+function resumeGallery() {
+  galleryState.paused = false;
+  if (galleryState.manual) {
+    galleryState.manual = false;
+    galleryState.offset = 0;
+    dom.galleryTrack.classList.remove("is-manual");
+    dom.galleryTrack.style.removeProperty("--gallery-offset");
+  }
+  dom.galleryTrack.classList.remove("is-paused");
+  dom.galleryPause?.setAttribute("aria-pressed", "false");
+  if (dom.galleryPause) dom.galleryPause.textContent = "暂停";
+}
+
+function moveGallery(step) {
+  const firstItem = dom.galleryTrack.querySelector(".gallery-item");
+  if (!firstItem) return;
+  pauseGallery();
+  galleryState.manual = true;
+  dom.galleryTrack.classList.add("is-manual");
+  const stepWidth = firstItem.getBoundingClientRect().width + 11;
+  setGalleryOffset(galleryState.offset - step * stepWidth);
+  galleryState.index = (galleryState.index + step + galleryImages.length) % galleryImages.length;
+  updateGalleryStatus();
+}
+
+function setupGalleryControls() {
+  if (!dom.galleryWindow || !dom.galleryTrack) return;
+  updateGalleryStatus();
+  dom.galleryPrev?.addEventListener("click", () => moveGallery(-1));
+  dom.galleryNext?.addEventListener("click", () => moveGallery(1));
+  dom.galleryPause?.addEventListener("click", () => galleryState.paused ? resumeGallery() : pauseGallery());
+
+  const stopDragging = (event) => {
+    if (!galleryState.dragging) return;
+    const pressedItem = galleryState.pressedItem;
+    galleryState.dragging = false;
+    galleryState.pressedItem = null;
+    if (galleryState.clickTimer) { window.clearTimeout(galleryState.clickTimer); galleryState.clickTimer = null; }
+    dom.galleryWindow.classList.remove("is-dragging");
+    if (galleryState.moved) {
+      const firstItem = dom.galleryTrack.querySelector(".gallery-item");
+      const stepWidth = firstItem ? firstItem.getBoundingClientRect().width + 11 : 1;
+      const indexShift = Math.round((galleryState.dragStartX - galleryState.lastX) / stepWidth);
+      galleryState.index = (galleryState.startIndex + indexShift + galleryImages.length) % galleryImages.length;
+      updateGalleryStatus();
+      galleryState.suppressClick = true;
+      window.setTimeout(() => { galleryState.suppressClick = false; }, 80);
+    } else if (pressedItem && !galleryState.suppressClick) {
+      galleryState.index = Number(pressedItem.dataset.galleryIndex);
+      updateGalleryStatus();
+      openLightbox(galleryImages, galleryState.index);
+    }
+    if (event?.pointerId !== undefined && dom.galleryWindow.hasPointerCapture?.(event.pointerId)) dom.galleryWindow.releasePointerCapture(event.pointerId);
+  };
+
+  dom.galleryWindow.addEventListener("pointerdown", (event) => {
+    if (event.pointerType === "mouse" && event.button !== 0) return;
+    galleryState.dragging = true;
+    galleryState.moved = false;
+    galleryState.dragStartX = event.clientX;
+    galleryState.lastX = event.clientX;
+    galleryState.startIndex = galleryState.index;
+    galleryState.startOffset = galleryState.offset;
+    galleryState.pressedItem = event.target.closest?.(".gallery-item") || null;
+    if (galleryState.pressedItem) {
+      galleryState.clickTimer = window.setTimeout(() => {
+        if (!galleryState.dragging || galleryState.moved || !galleryState.pressedItem) return;
+        galleryState.index = Number(galleryState.pressedItem.dataset.galleryIndex);
+        updateGalleryStatus();
+        openLightbox(galleryImages, galleryState.index);
+        galleryState.clickTimer = null;
+      }, 140);
+    }
+    pauseGallery();
+    galleryState.manual = true;
+    dom.galleryTrack.classList.add("is-manual");
+    dom.galleryWindow.classList.add("is-dragging");
+  });
+  dom.galleryWindow.addEventListener("pointermove", (event) => {
+    if (!galleryState.dragging) return;
+    const delta = event.clientX - galleryState.dragStartX;
+    galleryState.lastX = event.clientX;
+    if (Math.abs(delta) > 12) galleryState.moved = true;
+    if (galleryState.moved && galleryState.clickTimer) { window.clearTimeout(galleryState.clickTimer); galleryState.clickTimer = null; }
+    if (galleryState.moved) event.preventDefault();
+    setGalleryOffset(galleryState.startOffset + delta);
+  });
+  dom.galleryWindow.addEventListener("pointerup", stopDragging);
+  dom.galleryWindow.addEventListener("pointercancel", stopDragging);
+  dom.galleryWindow.addEventListener("lostpointercapture", () => stopDragging());
+  document.addEventListener("pointerup", stopDragging, true);
+
+  galleryState.autoTimer = window.setInterval(() => {
+    if (!galleryState.paused) {
+      galleryState.index = (galleryState.index + 1) % galleryImages.length;
+      updateGalleryStatus();
+    }
+  }, 3000);
 }
 
 function renderShots(project) {
@@ -98,7 +273,7 @@ function renderShots(project) {
 
 function openProject(index) {
   const project = projects[index]; if (!project) return;
-  fields.title.textContent = project.name; fields.summary.textContent = project.summary; fields.role.textContent = project.role; fields.problem.textContent = project.problem; fields.solution.textContent = project.solution; fields.tech.textContent = project.tech; fields.result.textContent = project.result; fields.link.textContent = project.link || "项目资料待补充";
+  fields.title.textContent = project.name; fields.summary.textContent = project.summary; fields.role.textContent = project.role; fields.problem.textContent = project.problem; fields.solution.textContent = project.solution; fields.tech.textContent = project.tech; fields.result.textContent = project.result; fields.link.innerHTML = project.link ? `<a href="${project.link}" target="_blank" rel="noreferrer">打开 GitHub ↗</a>` : "个人商业项目，无公开链接";
   renderShots(project); dom.projectModal.classList.remove("hidden"); lockScroll(true);
 }
 function closeProject() { dom.projectModal.classList.add("hidden"); lockScroll(anyPanelOpen()); }
@@ -122,12 +297,41 @@ function changeLightbox(step) { if (lightbox.shots.length > 1) { lightbox.index 
 
 function bindEvents() {
   dom.closeProjectModal.addEventListener("click", closeProject); dom.closeExperienceModal.addEventListener("click", closeExperience); dom.closeLightbox.addEventListener("click", closeLightbox); dom.lightboxPrev.addEventListener("click", () => changeLightbox(-1)); dom.lightboxNext.addEventListener("click", () => changeLightbox(1));
+  document.addEventListener("click", (event) => {
+    const galleryItem = event.target.closest?.(".gallery-item");
+    if (!galleryItem) return;
+    galleryState.index = Number(galleryItem.dataset.galleryIndex);
+    updateGalleryStatus();
+    openLightbox(galleryImages, galleryState.index);
+  });
   document.querySelectorAll("[data-close='project']").forEach((item) => item.addEventListener("click", closeProject)); document.querySelectorAll("[data-close='lightbox']").forEach((item) => item.addEventListener("click", closeLightbox));
   document.querySelectorAll("[data-close='experience']").forEach((item) => item.addEventListener("click", closeExperience));
   document.querySelectorAll("[data-open-experience]").forEach((item) => item.addEventListener("click", () => openExperience(Number(item.dataset.openExperience))));
   document.addEventListener("click", (event) => { const experienceItem = event.target.closest("[data-open-experience]"); if (experienceItem) { openExperience(Number(experienceItem.dataset.openExperience)); return; } const item = event.target.closest("[data-featured-project]"); if (item) openProject(Number(item.dataset.featuredProject)); });
   document.querySelectorAll("[data-open-about]").forEach((item) => item.addEventListener("click", () => document.getElementById("about")?.scrollIntoView({ behavior: "smooth" })));
   document.addEventListener("keydown", (event) => { if (!dom.imageLightbox.classList.contains("hidden")) { if (event.key === "ArrowLeft") changeLightbox(-1); if (event.key === "ArrowRight") changeLightbox(1); if (event.key === "Escape") closeLightbox(); return; } if (event.key === "Escape" && !dom.experienceModal.classList.contains("hidden")) { closeExperience(); return; } if (event.key === "Escape" && !dom.projectModal.classList.contains("hidden")) closeProject(); });
+}
+
+function setupMobileNav() {
+  const toggle = document.getElementById("mobileNavToggle");
+  const panel = document.getElementById("mobileNavPanel");
+  if (!toggle || !panel) return;
+  const close = () => {
+    panel.hidden = true;
+    toggle.setAttribute("aria-expanded", "false");
+    toggle.setAttribute("aria-label", "打开导航菜单");
+    document.body.classList.remove("mobile-nav-open");
+  };
+  toggle.addEventListener("click", () => {
+    const isOpen = toggle.getAttribute("aria-expanded") === "true";
+    if (isOpen) { close(); return; }
+    panel.hidden = false;
+    toggle.setAttribute("aria-expanded", "true");
+    toggle.setAttribute("aria-label", "关闭导航菜单");
+    document.body.classList.add("mobile-nav-open");
+  });
+  panel.querySelectorAll("a").forEach((link) => link.addEventListener("click", close));
+  document.addEventListener("keydown", (event) => { if (event.key === "Escape") close(); });
 }
 
 function setupReveal() { const observer = new IntersectionObserver((entries) => entries.forEach((entry) => { if (entry.isIntersecting) { entry.target.classList.add("is-visible"); observer.unobserve(entry.target); } }), { threshold: 0.12 }); document.querySelectorAll(".reveal").forEach((element) => observer.observe(element)); }
@@ -248,4 +452,4 @@ function setupResponsiveInteractions() {
   });
 }
 
-renderProjects(); renderGallery(); bindEvents(); setupReveal(); setupGlobalMotion(); setupPageTurn(); setupResponsiveInteractions();
+renderProjects(); renderGallery(); setFeaturedProject(0); bindEvents(); setupMobileNav(); setupGalleryControls(); setupReveal(); setupGlobalMotion(); setupPageTurn(); setupResponsiveInteractions();
